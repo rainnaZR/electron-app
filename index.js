@@ -6,7 +6,8 @@ let win = null;
 app.on('ready', () => {
     win = new BrowserWindow({
         webPreferences: {
-            nodeIntegration: true  // 窗口对象集成node.js环境
+            nodeIntegration: true,  // 窗口对象集成node.js环境
+            enableRemoteModule: true  // 访问remote
         }
     });
     win.loadFile('index.html');

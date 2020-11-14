@@ -7,9 +7,14 @@
 </head>
 <body>
     <div style="color:red;font-size:30px;">Hello world-Hello world111</div>
+    <button id="openDevToolBtn">打开开发者工具</button>
+    
     <script>
-        let res = require('./objRender');
-        alert(res.key)
+        // 打开开发者调试工具
+        let { remote } = require('electron');
+        document.querySelector('#openDevToolBtn').addEventListener('click', () => {
+            remote.getCurrentWindow().webContents.openDevTools();
+        })
     </script>
 </body>
 </html>
