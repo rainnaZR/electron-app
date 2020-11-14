@@ -1,0 +1,14 @@
+{
+  "name": "electron-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/rainnaZR/electron-app.git",
+  "author": "rainnazr",
+  "license": "MIT",
+  "scripts":{
+    "start": "electron ./index.js"
+  },
+  "devDependencies": {
+    "electron": "^10.1.5"
+  }
+}
