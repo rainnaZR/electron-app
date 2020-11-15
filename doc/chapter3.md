@@ -30,6 +30,7 @@ webpack打包时，会把渲染进程renderer/index.js的入口文件放到自�
 
 - yarn global add @vue/cli
 - vue create vue-electron-project
+- cd vue-electron-project
 - vue add electron-builder
 - yarn electron:serve
 
