@@ -13,8 +13,31 @@ JS的事件循环机制使得JS适合处理高IO的应用，不适合处理CPU�
 
 ### 进程互访
 
-#### 渲染进程访问主进程
+- 渲染进程访问主进程：渲染进程使用electron.remote来调用主进程的方法。除了remote.getCurrentWindow()和remote.getCurrentWebContents()外，还可以通过remote对象访问主进程的app,BrowserWindow等对象和类型。渲染进程无法直接访问BrowserWindow等对象和类型。
+- 主进程访问渲染进程对象。
 
+### 进程间消息传递
+
+- 渲染进程向主进程发送消息：渲染进程使用electron内置的ipcRenderer模块向主进程发送消息。
+
+```
+// 第一个参数是消息管道的名称，后面的参数是消息传递的数据
+// 渲染进程发送消息
+let { ipcRenderer } = require('electron');
+ipcRenderer.send('msg', {
+    name: 'name1'
+},{
+    name: 'name2'
+})
+
+// 主进程接收消息
+let { ipcMain } = require('electron');
+ipcMain.on('msg', (event, param) => {
+    console.log(event.sender, param);
+})
+```
+
+消息传递的原理都是进程间通信，通信过程中随消息发送的json对象会被序列化和反序列化，所以JSON对象中包含的方法和原型上的数据不会被传送。
 
 ### 扩展阅读
 

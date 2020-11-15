@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>electron窗口标题</title>
+</head>
+<body>
+    <div style="color:red;font-size:30px;">Hello world!</div>
+    <button id="openDevToolBtn">打开开发者工具</button>
+    <button id="makeNewWindow">remote新开页面</button>
+    <button id="makeNewWindow2">自定义新开页面</button>
+
+    <script>
+        // 打开开发者调试工具
+        let { remote } = require('electron');
+        document.querySelector('#openDevToolBtn').addEventListener('click', () => {
+            remote.getCurrentWindow().webContents.openDevTools();
+        })
+
+        // 调用remote打开新窗口
+        let win = null;
+        document.querySelector('#makeNewWindow').addEventListener('click', () => {
+          win = new remote.BrowserWindow({
+              webPreferences: {
+                  nodeIntegration: true,
+                  enableRemoteModule: true
+              }
+          }) 
+          win.loadFile('index.html'); 
+        })
+    </script>
+</body>
+</html>

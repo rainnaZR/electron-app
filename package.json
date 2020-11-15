@@ -5,10 +5,13 @@
   "repository": "https://github.com/rainnaZR/electron-app.git",
   "author": "rainnazr",
   "license": "MIT",
-  "scripts":{
-    "start": "electron ./index.js"
+  "scripts": {
+    "start": "electron-webpack dev",
+    "build": "electron-webpack build"
   },
   "devDependencies": {
-    "electron": "^10.1.5"
+    "electron": "^10.1.5",
+    "electron-webpack": "^2.8.2",
+    "webpack": "^4.42.1"
   }
 }
