@@ -1,5 +1,5 @@
 export default {
     say: () => {
-        document.write('Hello webpack-webpack')
+        document.write('Hello webpack！')
     }
 }
